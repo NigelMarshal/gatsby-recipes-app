@@ -1,26 +1,45 @@
-import React from "react"
+import React, { useState } from "react"
 import { Link } from "gatsby"
-const Navbar = () => {
-  return (
-    <nav>
-      <ul>
-        <li>
-          <Link to="/">home</Link>
-        </li>
-        <li>
-          <Link to="/about">about</Link>
-        </li>
-        <li>
-          <Link to="/contact">contact</Link>
-        </li>
-        <li>
-          <Link to="/tags">tags</Link>
-        </li>
+import { FiAlignJustify } from "react-icons/fi"
 
-        <li>
-          <Link to="/recipes">recipes</Link>
-        </li>
-      </ul>
+const Navbar = () => {
+  const [showHamburger, setShowHamburger] = useState(false)
+  return (
+    <nav className="navbar">
+      <div className="nav-center">
+        <div className="nav-header">
+          <Link to="/">Logo</Link>
+          <button
+            className="nav-btn"
+            onClick={() => setShowHamburger(!showHamburger)}
+          >
+            <FiAlignJustify />
+          </button>
+        </div>
+        <div className={showHamburger ? "nav-links show-links" : "nav-links"}>
+          <Link to="/" className="nav-link" activeClassName="active-link">
+            Home
+          </Link>
+          <Link
+            to="/recipes"
+            className="nav-link"
+            activeClassName="active-link"
+          >
+            Recipes
+          </Link>
+          <Link to="/tags" className="nav-link" activeClassName="active-link">
+            Tags
+          </Link>
+          <Link to="/about" className="nav-link" activeClassName="active-link">
+            About
+          </Link>
+          <div className="nav-link contact-link">
+            <Link to="/contact" className="btn">
+              Contact
+            </Link>
+          </div>
+        </div>
+      </div>
     </nav>
   )
 }
