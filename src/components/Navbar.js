@@ -1,14 +1,16 @@
 import React, { useState } from "react"
 import { Link } from "gatsby"
 import { FiAlignJustify } from "react-icons/fi"
-
+import logo from "../assets/images/logo.svg"
 const Navbar = () => {
   const [showHamburger, setShowHamburger] = useState(false)
   return (
     <nav className="navbar">
       <div className="nav-center">
         <div className="nav-header">
-          <Link to="/">Logo</Link>
+          <Link to="/">
+            <img src={logo} alt="simply recipes" />
+          </Link>
           <button
             className="nav-btn"
             onClick={() => setShowHamburger(!showHamburger)}
